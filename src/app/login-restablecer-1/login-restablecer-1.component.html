@@ -1,0 +1,51 @@
+<div class="login-container">
+  <div class="image-section">
+    <div class="overlay">
+      <!-- Puedes agregar algún contenido aquí si deseas -->
+    </div>
+  </div>
+  <div class="form-section">
+    <div class="logo-container">
+      <img src="assets/imagenes/logo.png" alt="Logo" class="logo" />
+    </div>
+    <h2>Restablece tu contraseña</h2>
+    <form (ngSubmit)="onSubmit()">
+      <!-- Campo de nueva contraseña -->
+      <div class="p-field">
+        <label for="new-password">Ingresa la nueva contraseña</label>
+        <span class="p-input-icon-left password-icon">
+          <i class="pi pi-lock"></i>
+          <input pInputText id="new-password" name="newPassword" [(ngModel)]="newPassword" type="password"
+            placeholder="Ingrese su contraseña" required />
+        </span>
+        <small class="password-help">Mínimo con 8 caracteres, con mayúscula, minúscula o un símbolo</small>
+      </div>
+
+      <!-- Campo de confirmación de contraseña -->
+      <div class="p-field">
+        <label for="confirm-password">Confirma tu contraseña</label>
+        <span class="p-input-icon-left password-icon">
+          <i class="pi pi-lock"></i>
+          <input pInputText id="confirm-password" name="confirmPassword" [(ngModel)]="confirmPassword" type="password"
+            placeholder="Confirme su contraseña" required />
+        </span>
+      </div>
+
+      <!-- Mensaje de error utilizando p-message -->
+      <div *ngIf="errorMessage" class="card">
+        <p-message severity="error" text="{{ errorMessage }}"></p-message>
+      </div>
+
+      <!-- Botón de confirmar -->
+      <button pButton type="submit" label="CONFIRMAR" class="p-mt-2"></button>
+
+      <!-- Enlace para volver a la pantalla de inicio de sesión -->
+      <div class="return-home">
+        <a (click)="navigateToDatateam()">
+          <i class="pi pi-arrow-left"></i> Vuelve a la pantalla de Inicio
+          de Sesión
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
