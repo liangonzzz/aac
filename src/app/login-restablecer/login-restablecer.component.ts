@@ -36,12 +36,12 @@ export class LoginRestablecerComponent {
   onSubmit() {
     if (!this.email) {
       this.errorMessage = '¡Ingrese su correo electrónico!';  // Mensaje de error si el campo está vacío
-      
+
       // Temporizador para ocultar el mensaje de error después de 1500 ms
       setTimeout(() => {
         this.errorMessage = '';
       }, 1000);
-      
+
       return;
     }
 

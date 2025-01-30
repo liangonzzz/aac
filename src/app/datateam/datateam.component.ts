@@ -25,20 +25,35 @@ import { CheckboxModule } from 'primeng/checkbox';
   templateUrl: './datateam.component.html',
   styleUrls: ['./datateam.component.css']
 })
+
 export class DatateamComponent {
   documentTypes = [
     { label: 'Cédula de Ciudadanía', value: 'cc' },
-    { label: 'Cédula de Extranjería', value: 'ce' }
+    { label: 'Cédula de Extranjería', value: 'ce' },
+    { label: 'Pasaporte', value: 'pt' }
   ];
 
-  selectedDocumentType: string | null = null;
-  password: string = '';  // Definir la propiedad para la contraseña
+  selectedDocumentType: { label: string, value: string } | null = null;
+  documentNumber: string = '';
+  password: string = '';
+  errorMessage: string = '';
 
   constructor(private router: Router) {}
 
   onSubmit() {
-    // Aquí puedes agregar la lógica de autenticación si es necesario
-    this.router.navigate(['/login-restablecer-1']);
+    // Verificar si las credenciales son correctas
+    if (this.selectedDocumentType?.value === 'cc' && this.documentNumber === '123456789' && this.password === '123') {
+      this.router.navigate(['/login-restablecer-1']);
+    } else {
+      this.errorMessage = 'Tipo de documento, número de identificación o contraseña incorrectos.';
+    }
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 1500);
+  }
+
+  onDocumentTypeChange() {
+    console.log('Document Type Changed:', this.selectedDocumentType);
   }
 
   navigateToLoginRestablecer() {
