@@ -1,0 +1,22 @@
+[
+  {
+    "id_document_type": "cc",
+    "document_number": "123456789",
+    "password": "123"
+  },
+  {
+    "id_document_type": "ce",
+    "document_number": "987654321",
+    "password": "123"
+  },
+  {
+    "id_document_type": "pt",
+    "document_number": "12345",
+    "password": "123"
+  },
+  {
+    "id_document_type": "cc",
+    "document_number": "67890",
+    "password": "123"
+  }
+]

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../service/auth.service'; // Importa el servicio de autenticación correctamente
 
 // prime
 import { InputTextModule } from 'primeng/inputtext';
@@ -25,7 +26,6 @@ import { CheckboxModule } from 'primeng/checkbox';
   templateUrl: './datateam.component.html',
   styleUrls: ['./datateam.component.css']
 })
-
 export class DatateamComponent {
   documentTypes = [
     { label: 'Cédula de Ciudadanía', value: 'cc' },
@@ -38,14 +38,30 @@ export class DatateamComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {} // Inyecta el servicio de autenticación
 
   onSubmit() {
-    // Verificar si las credenciales son correctas
-    if (this.selectedDocumentType?.value === 'cc' && this.documentNumber === '123456789' && this.password === '123') {
-      this.router.navigate(['/login-restablecer-1']);
+    console.log('Document Type:', this.selectedDocumentType?.value);
+    console.log('Document Number:', this.documentNumber);
+    console.log('Password:', this.password);
+
+    if (this.selectedDocumentType && this.documentNumber && this.password) {
+      this.authService.login(this.selectedDocumentType.value, this.documentNumber, this.password).subscribe(
+        (isAuthenticated: boolean) => { // Especifica el tipo boolean
+          console.log('Authentication Result:', isAuthenticated);
+          if (isAuthenticated) {
+            this.router.navigate(['/login-restablecer-1']);
+          } else {
+            this.errorMessage = 'Tipo de documento, número de identificación o contraseña incorrectos.';
+          }
+        },
+        (error: any) => { // Especifica el tipo any
+          console.error('Error:', error);
+          this.errorMessage = 'Error al cargar los datos de usuario.';
+        }
+      );
     } else {
-      this.errorMessage = 'Tipo de documento, número de identificación o contraseña incorrectos.';
+      this.errorMessage = 'Por favor, complete todos los campos.';
     }
     setTimeout(() => {
       this.errorMessage = '';
