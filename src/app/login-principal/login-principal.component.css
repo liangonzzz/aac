@@ -1,162 +1,217 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import "primeicons/primeicons.css";
 
-body, .login-container, .form-section, form, label, input, button, .p-dropdown {
+body, .login-container, .form-section, form, label, input, button, select {
   font-family: 'Roboto', sans-serif;
 }
 
+/* Contenedor principal para el formulario de inicio de sesión */
 .login-container {
-  display: flex; 
-  height: 95vh; 
-  overflow: hidden; 
-  margin-top: 10px; 
-  border-radius: 20px; 
+  display: flex;
+  height: 95vh; /* Altura del contenedor: 95% de la altura de la ventana */
+  overflow: hidden;
+  margin-top: 10px; /* Espaciado superior */
+  border-radius: 20px; /* Bordes redondeados */
 }
 
+/* Sección de la imagen de fondo */
 .image-section {
-  flex: 1.3; 
+  flex: 1.3; /* Ocupa la mitad del espacio disponible */
   background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') no-repeat center center;
-  background-size: cover; 
-  position: relative; 
-  border-radius: 20px; 
+  background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+  position: relative; /* Posiciona elementos dentro de esta sección */
+  border-radius: 20px;
 }
 
+/* Capa de superposición para oscurecer la imagen de fondo */
 .overlay {
-  position: absolute; 
+  position: absolute; /* Posición absoluta para cubrir toda la imagen */
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(214, 221, 121, 0.5); 
-  border-radius: 20px; 
+  background-color: rgba(214, 221, 121, 0.5);
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Sección del formulario */
 .form-section {
-  flex: 1; 
-  padding: 20px; 
-  display: flex; 
+  flex: 1; /* Ocupa la mitad del espacio disponible */
+  padding: 20px; /* Espaciado interno */
+  display: flex; /* Organiza los elementos de manera vertical */
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff; 
-  border-radius: 20px; 
+  background-color: #ffffff; /* Fondo blanco */
+  border-radius: 20px;
 }
 
+/* Centrar el contenido dentro de .form-section */
+.form-section > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Estilos para el formulario */
 form {
-  display: flex; 
+  display: flex; /* Organiza los elementos del formulario de manera vertical */
   flex-direction: column;
-  width: 100%; 
-  max-width: 360px; 
+  width: 100%; /* Ocupa el 100% del contenedor */
+  max-width: 360px; /* Ancho máximo reducido */
   padding: 15px;
-  margin: 0 auto; 
+  margin: 0 auto; /* Centra el formulario */
 }
 
+/* Estilo del título (Bienvenidos) */
 h2 {
-  margin-top: 10px;
+  margin-top: 60px;
   margin-bottom: 15px;
-  font-size: 20px; 
-  font-weight: bold;
+  font-size: 15px; /* Tamaño reducido */
+  font-weight: 500;
 }
 
+/* Estilo de las etiquetas */
 label {
-  font-weight: bold; 
+  font-weight: bold; /* Texto en negrita */
   margin-bottom: 3px;
-  font-size: 13px; 
+  font-size: 13px; /* Tamaño reducido */
 }
 
-input, button, .p-dropdown {
-  width: 100%; 
-  margin: 5px 0; 
-  padding: 6px; 
-  border: 1px solid #ccc; 
-  border-radius: 4px; 
-  box-sizing: border-box; 
-  font-size: 13px; 
+/* Estilo de los campos de entrada, botones y menús desplegables */
+input, button, select {
+  width: 100%; /* Ocupa el 100% del contenedor */
+  margin: 5px 0; /* Espaciado entre los elementos */
+  padding: 6px; /* Padding reducido */
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye el padding y borde en el tamaño total */
+  font-size: 13px; /* Tamaño reducido */
+  height: 36px; /* Altura igualada */
 }
 
-.p-dropdown {
-  padding: 0;
-  height: 36px; 
+/* Estilos específicos para los menús desplegables */
+select {
+  padding: 0 6px; /* Ajusta el padding para que coincida con los otros campos */
+  height: 36px; /* Altura igualada */
   line-height: normal;
-  border-radius: 5px; 
+  border-radius: 4px; /* Bordes redondeados */
+  background-color: #ffffff; /* Fondo blanco */
+  color: #000000; /* Color del texto */
+  appearance: none; /* Elimina el estilo predeterminado del navegador */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%234F5F92" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>'); /* Flecha personalizada en color #4F5F92 */
+  background-repeat: no-repeat;
+  background-position: right 12px center; /* Ajusta la posición de la flecha */
+  background-size: 16px 16px; /* Tamaño de la flecha */
 }
 
-.p-input-icon-left {
-  position: relative; 
-  display: flex;
-  align-items: center;
+/* Cambiar el color del borde al seleccionar */
+select:focus {
+  border-color: #4F5F92 !important; /* Color azul */
+  background-color: #ffffff !important; /* Fondo blanco */
+  color: #000000 !important; /* Color del texto */
+  outline: none; /* Elimina el borde de enfoque predeterminado */
 }
 
-.p-input-icon-left i {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%); 
-  font-size: 16px; 
-  color: #b9b9b9; 
-}
-
-.p-input-icon-left input {
-  padding-left: 35px; 
-  width: 100%;
-  height: 36px; 
-  box-sizing: border-box;
-}
-
-.password-icon i {
-  font-size: 15px;
-  color: #b9b9b9; 
-}
-
+/* Estilo del botón */
 .p-button {
-  background-color: #4F5F92; 
-  color: white; 
-  border: none; 
-  padding: 8px 20px; 
-  border-radius: 5px; 
-  font-size: 15px; 
-  transition: background-color 0.3s ease; 
+  background-color: #4F5F92; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  border: none; /* Elimina el borde */
+  padding: 8px 20px; /* Padding ajustado */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 15px; /* Tamaño de la fuente */
+  transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
 }
 
+/* Efecto al pasar el cursor sobre el botón */
 .p-button:hover {
-  background-color: #31427a !important; 
+  background-color: #31427a !important; /* Color de fondo más oscuro al pasar el cursor */
 }
 
+/* Estilo del logo */
 .logo-container {
-  text-align: center; 
+  text-align: center; /* Centra el logo */
   margin-bottom: 15px;
 }
 
 .logo {
-  max-width: 150px; /* Ancho máximo del logo */
+  max-width: 240px; /* Ancho máximo del logo */
   height: auto; /* Altura automática */
   padding: 8px 20px; /* Padding ajustado */
+  margin-top: 40px;
 }
 
+/* Estilo del enlace de "Olvidaste tu contraseña?" */
 .forgot-password {
   margin-top: 10px;
-  text-align: center; 
+  text-align: center; /* Centra el enlace */
 }
 
 .forgot-password a {
-  font-size: 13px; 
-  color: #4F5F92; 
-  text-decoration: none; 
+  font-size: 13px; /* Tamaño reducido */
+  color: #4F5F92; /* Color del enlace */
+  text-decoration: none; /* Elimina el subrayado */
 }
 
 .forgot-password a:hover {
-  text-decoration: underline; 
+  text-decoration: underline; /* Subraya el enlace al pasar el cursor */
 }
 
-input:focus, .p-dropdown:focus, .p-password:focus {
-  border-color: #4CAF50 !important; 
+/* Cambia el borde de los campos cuando están en foco */
+input:focus, select:focus {
+  border-color: #4F5F92 !important; /* Color azul cuando el campo está en foco */
+  background-color: #ffffff !important; /* Fondo blanco */
+  color: #000000 !important; /* Color del texto */
+  outline: none; /* Elimina el borde de enfoque predeterminado */
 }
 
-.p-dropdown .p-dropdown-trigger {
-  color: #4CAF50; 
-  border: none; 
+/* Espaciado entre las etiquetas y los cuadros de entrada */
+.p-field {
+  margin-bottom: 15px; /* Ajusta el espacio entre los campos */
 }
 
-.p-dropdown .p-dropdown-trigger:hover {
-  color: #45a049; 
+.error-message{
+  color: red;
+  font-size: 12px;
 }
+
+
+.forgot-password {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.forgot-password a {
+  font-size: 13px;
+  color: #4F5F92;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 500px) {
+  .login-container {
+    flex-direction: column; /* Cambia la dirección del contenedor a columna */
+    height: auto; /* Altura automática */
+  }
+
+  .image-section, .form-section {
+    flex: none; /* Elimina la flexibilidad */
+    width: 100%; /* Ancho completo */
+    border-radius: 0; /* Elimina los bordes redondeados */
+  }
+
+  .form-section {
+    padding: 15px; /* Espaciado reducido */
+  }
+
+  form {
+    width: 90%; /* Ajusta el ancho para pantallas pequeñas */
+    max-width: none; /* Elimina el ancho máximo */
+  }
+}
+
+

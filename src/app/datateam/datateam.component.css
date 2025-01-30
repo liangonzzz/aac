@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import "primeicons/primeicons.css";
 
-body, .login-container, .form-section, form, label, input, button, .p-dropdown {
+body, .login-container, .form-section, form, label, input, button, select {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -44,7 +44,12 @@ body, .login-container, .form-section, form, label, input, button, .p-dropdown {
   align-items: center;
   background-color: #ffffff; /* Fondo blanco */
   border-radius: 20px;
-  margin-top: 40px;
+}
+
+/* Centrar el contenido dentro de .form-section */
+.form-section > * {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Estilos para el formulario */
@@ -59,11 +64,10 @@ form {
 
 /* Estilo del título (Bienvenidos) */
 h2 {
-  margin-top: 70px;
+  margin-top: 60px;
   margin-bottom: 15px;
-  font-size: 17px; /* Tamaño reducido */
-  font-weight: bold;
-  color: #3e3e3e;
+  font-size: 15px; /* Tamaño reducido */
+  font-weight: 500;
 }
 
 /* Estilo de las etiquetas */
@@ -74,7 +78,7 @@ label {
 }
 
 /* Estilo de los campos de entrada, botones y menús desplegables */
-input, button, .p-dropdown {
+input, button, select {
   width: 100%; /* Ocupa el 100% del contenedor */
   margin: 5px 0; /* Espaciado entre los elementos */
   padding: 6px; /* Padding reducido */
@@ -82,46 +86,30 @@ input, button, .p-dropdown {
   border-radius: 4px; /* Bordes redondeados */
   box-sizing: border-box; /* Incluye el padding y borde en el tamaño total */
   font-size: 13px; /* Tamaño reducido */
-  margin-bottom: 20px;
+  height: 36px; /* Altura igualada */
 }
 
 /* Estilos específicos para los menús desplegables */
-.p-dropdown {
-  padding: 0;
-  height: 36px; /* Altura reducida */
+select {
+  padding: 0 6px; /* Ajusta el padding para que coincida con los otros campos */
+  height: 36px; /* Altura igualada */
   line-height: normal;
-  border-radius: 5px; /* Bordes redondeados */
+  border-radius: 4px; /* Bordes redondeados */
+  background-color: #ffffff; /* Fondo blanco */
+  color: #000000; /* Color del texto */
+  appearance: none; /* Elimina el estilo predeterminado del navegador */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%234F5F92" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>'); /* Flecha personalizada en color #4F5F92 */
+  background-repeat: no-repeat;
+  background-position: right 12px center; /* Ajusta la posición de la flecha */
+  background-size: 16px 16px; /* Tamaño de la flecha */
 }
 
-/* Estilos para los iconos dentro de los campos de texto */
-.p-input-icon-left {
-  position: relative; /* Posición para los iconos */
-  display: flex;
-  align-items: center;
-}
-
-.p-input-icon-left i {
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%); /* Centra el icono verticalmente */
-  font-size: 20px; /* Tamaño reducido */
-  color: #b9b9b9; /* Color gris para el icono */
-}
-
-.p-input-icon-left input {
-  padding-left: 35px; /* Espaciado a la izquierda para el icono */
-  width: 100%;
-  height: 36px; /* Altura reducida */
-  box-sizing: border-box;
-  margin-top: 18px;
-}
-
-/* Estilos para el campo de contraseña */
-.password-icon i {
-  font-size: 25px;
-  color: #b9b9b9; /* Color gris para el icono */
-  left: 10px;
+/* Cambiar el color del borde al seleccionar */
+select:focus {
+  border-color: #4F5F92 !important; /* Color azul */
+  background-color: #ffffff !important; /* Fondo blanco */
+  color: #000000 !important; /* Color del texto */
+  outline: none; /* Elimina el borde de enfoque predeterminado */
 }
 
 /* Estilo del botón */
@@ -133,7 +121,6 @@ input, button, .p-dropdown {
   border-radius: 5px; /* Bordes redondeados */
   font-size: 15px; /* Tamaño de la fuente */
   transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
-  margin-bottom: 20px;
 }
 
 /* Efecto al pasar el cursor sobre el botón */
@@ -148,10 +135,10 @@ input, button, .p-dropdown {
 }
 
 .logo {
-  max-width: 250px; /* Ancho máximo del logo */
+  max-width: 240px; /* Ancho máximo del logo */
   height: auto; /* Altura automática */
   padding: 8px 20px; /* Padding ajustado */
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 /* Estilo del enlace de "Olvidaste tu contraseña?" */
@@ -171,45 +158,26 @@ input, button, .p-dropdown {
 }
 
 /* Cambia el borde de los campos cuando están en foco */
-input:focus, .p-dropdown:focus, .p-password:focus {
-  border-color: #4CAF50 !important; /* Color verde cuando el campo está en foco */
+input:focus, select:focus {
+  border-color: #4F5F92 !important; /* Color azul cuando el campo está en foco */
+  background-color: #ffffff !important; /* Fondo blanco */
+  color: #000000 !important; /* Color del texto */
+  outline: none; /* Elimina el borde de enfoque predeterminado */
 }
 
-/* Cambia el color de la flecha del menú desplegable */
-.p-dropdown .p-dropdown-trigger {
-  color: #4CAF50; /* Color verde */
-  border: none; /* Elimina el borde */
-}
-
-.p-dropdown .p-dropdown-trigger:hover {
-  color: #45a049; /* Color más oscuro al pasar el cursor */
-}
-
-.error-message {
-  color: red;
-  font-weight: bold;
-  margin-top: 10px;
-  font-size: 15px;
-  text-align: center;
-}
-
-/* Reducir el espacio entre algunos campos */
+/* Espaciado entre las etiquetas y los cuadros de entrada */
 .p-field {
   margin-bottom: 15px; /* Ajusta el espacio entre los campos */
 }
 
-/* Ajusta los márgenes de los inputs específicos */
-.p-field input {
-  margin-top: 10px; /* Ajusta el margen superior para el campo input */
-}
-
-/* Para los campos donde necesitas más espacio (como entre identificación y contraseña) */
-.p-field:nth-child(2) {
-  margin-bottom: 30px; /* Aumenta el espacio entre los campos de identificación y contraseña */
+.error-message{
+  color: red;
+  font-size: 15px;
+  text-align: center;
 }
 
 /* Media query para dispositivos móviles */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .login-container {
     flex-direction: column; /* Cambia la dirección del contenedor a columna */
     height: auto; /* Altura automática */
