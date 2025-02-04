@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import "primeicons/primeicons.css";
 
-html, body {
-  background-color: white !important;
-  color: black; /* Asegura que el texto sea visible en fondo claro */
-}
-
-
 body, .login-container, .form-section, form, label, input, .p-button {
   font-family: 'Roboto', sans-serif;
 }
@@ -20,8 +14,9 @@ body, .login-container, .form-section, form, label, input, .p-button {
 }
 
 .image-section {
-  flex: 1.3;
-  background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') no-repeat center center;
+  left: 4%;
+  flex: 1.1;
+  background: url('../../assets/images/loginfoto.jpg') no-repeat center center;
   background-size: cover;
   position: relative;
   border-radius: 20px;
@@ -30,7 +25,7 @@ body, .login-container, .form-section, form, label, input, .p-button {
 .overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(214, 221, 121, 0.5);
+  background-color: rgba(120, 145, 221, 0.5);
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -44,7 +39,6 @@ body, .login-container, .form-section, form, label, input, .p-button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--white);
   border-radius: 20px;
 }
 

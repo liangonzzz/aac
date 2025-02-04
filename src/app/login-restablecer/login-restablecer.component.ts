@@ -25,7 +25,7 @@ import { MessageModule } from 'primeng/message';
     MessageModule
   ],
   templateUrl: './login-restablecer.component.html',
-  styleUrls: ['./login-restablecer.component.css']
+  styleUrls: ['./login-restablecer.component.scss']
 })
 export class LoginRestablecerComponent {
   email: string = '';  // Definir la propiedad para el correo electrónico
