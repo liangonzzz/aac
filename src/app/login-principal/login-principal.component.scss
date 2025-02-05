@@ -6,20 +6,23 @@ body, .login-container, .form-section, form, label, input, .p-button {
 }
 
 .login-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
   height: 95vh;
   overflow: hidden;
   margin-top: 10px;
-  border-radius: 20px;
+  justify-items: center;
+  align-items: center;
 }
 
 .image-section {
-  left: 4%;
-  flex: 1.1;
   background: url('../../assets/images/loginfoto.jpg') no-repeat center center;
   background-size: cover;
   position: relative;
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
+  margin-left: 60px; /* Espacio a la izquierda */
 }
 
 .overlay {
@@ -27,19 +30,22 @@ body, .login-container, .form-section, form, label, input, .p-button {
   top: 0; left: 0; right: 0; bottom: 0;
   background-color: rgba(120, 145, 221, 0.5);
   border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
 }
 
+/* Sección del formulario */
 .form-section {
-  flex: 1;
   padding: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+  width: 100%;
+  max-width: 380px;
+  margin-left: 40px;
 }
 
 .logo {

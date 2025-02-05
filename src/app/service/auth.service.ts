@@ -11,11 +11,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(documentType: string, documentNumber: string, password: string): Observable<boolean> {
+  login(documentNumber: string, password: string): Observable<boolean> {
     return this.http.get<any[]>(this.usersUrl).pipe(
       map(users => {
         const user = users.find(u =>
-          u.id_document_type === documentType &&
           u.document_number === documentNumber &&
           u.password === password
         );

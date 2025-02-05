@@ -7,12 +7,12 @@ body, .login-container, .form-section, form, label, input, .p-button {
 
 .login-container {
   display: grid;
-  grid-template-columns: 1.3fr 1fr; /* Mantiene las dos secciones lado a lado */
+  grid-template-columns: 1.3fr 1fr;
   height: 95vh;
   overflow: hidden;
   margin-top: 10px;
-  justify-items: center; /* Centra las secciones horizontalmente */
-  align-items: center; /* Centra las secciones verticalmente */
+  justify-items: center;
+  align-items: center;
 }
 
 .image-section {
@@ -22,6 +22,7 @@ body, .login-container, .form-section, form, label, input, .p-button {
   width: 100%;
   height: 100%;
   border-radius: 20px;
+  margin-left: 60px; /* Espacio a la izquierda */
 }
 
 .overlay {
@@ -39,55 +40,57 @@ body, .login-container, .form-section, form, label, input, .p-button {
   background-color: #ffffff;
   border-radius: 20px;
   display: flex;
-  flex-direction: column; /* Coloca los elementos en columna */
-  justify-content: center; /* Centra el contenido verticalmente */
-  align-items: center;    /* Centra el contenido horizontalmente */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: 380px;
+  margin-left: 40px;
 }
 
 form {
   display: grid;
-  gap: 20px;  /* Espacio entre los elementos del formulario */
+  gap: 20px;
   width: 100%;
   padding: 15px;
   margin: 0 auto;
 }
 
 .logo-container {
-  text-align: center;  /* Centra el contenido horizontalmente */
-  margin-bottom: 15px;  /* Espacio debajo del logo */
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .logo {
-  max-width: 230px;  /* Ajusta el tamaño del logo */
+  max-width: 230px;
   height: auto;
-  margin: 0 auto;  /* Centra el logo horizontalmente */
-  display: block;
+  padding: 8px 20px;
+  margin-top: 20px;
   margin-bottom: 50px;
 }
 
+
 h2 {
-  margin-top: 40px;  /* Elimina el margen superior */
-  margin-bottom: 5px;  /* Reduce el margen inferior */
+  margin-top: 30px;
+  margin-bottom: 5px;
   font-size: 17px;
   font-weight: bold;
   color: var(--gris-1);
 }
 
 h5 {
-  margin-top: 5px;  /* Reduce el margen superior */
-  margin-bottom: 15px;  /* Elimina el margen inferior */
+  margin-top: 10px;
+  margin-bottom: 30px;
   font-size: 12px;
   font-weight: 500;
   color: var(--gris-1);
   text-align: center;
-  width: 100%;  /* Asegura que ocupe el mismo ancho que los inputs y botones */
-  box-sizing: border-box;  /* Asegura que el ancho sea el total disponible */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 input, .p-button {
-  width: 100%;  /* Hace que los inputs y botones ocupen todo el ancho */
+  width: 100%;
   height: 36px;
   padding: 6px;
   border: 1px solid var(--gris-4);
@@ -170,11 +173,18 @@ input::placeholder {
 /* Media query para dispositivos móviles */
 @media (max-width: 768px) {
   .login-container {
-    grid-template-columns: 1fr;  /* Apila las secciones */
+    grid-template-columns: 1fr;
     height: auto;
+    gap: 0; /* Se elimina el espacio en móviles */
   }
 
-  .image-section, .form-section {
+  .image-section {
+    width: 100%;
+    border-radius: 0;
+    margin-left: 0; /* Se elimina el margen en móviles */
+  }
+
+  .form-section {
     width: 100%;
     border-radius: 0;
   }
@@ -183,8 +193,4 @@ input::placeholder {
     width: 90%;
     max-width: none;
   }
-}
-
-.popo{
-  afafa
 }

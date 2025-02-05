@@ -9,18 +9,6 @@
     <h2>Bienvenido</h2>
     <form (ngSubmit)="onSubmit()">
       <div class="p-field">
-        <label for="documentType">Tipo de Documento</label>
-        <p-dropdown
-          [options]="documentTypes"
-          [(ngModel)]="selectedDocumentType"
-          optionLabel="label"
-          placeholder="Seleccione un tipo de documento"
-          id="documentType"
-          name="documentType"
-        ></p-dropdown>
-      </div>
-
-      <div class="p-field">
         <label for="documentNumber">Número de identificación</label>
         <span class="p-input-icon-left">
           <i class="fa fa-id-card"></i>
@@ -59,6 +47,8 @@
     </form>
   </div>
 </div>
-{{selectedDocumentType|json}}
+
+
 {{documentNumber|json}}
 {{password|json}}
+
