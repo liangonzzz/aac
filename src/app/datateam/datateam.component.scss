@@ -1,232 +1,221 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import "primeicons/primeicons.css";
 
-body, .login-container, .form-section, form, label, input, button, .p-dropdown {
+body, .login-container, .form-section, form, label, input, .p-button {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Contenedor principal para el formulario de inicio de sesión */
 .login-container {
-  display: flex;
-  height: 95vh; /* Altura del contenedor: 95% de la altura de la ventana */
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  height: 95vh;
   overflow: hidden;
-  margin-top: 10px; /* Espaciado superior */
-  border-radius: 20px; /* Bordes redondeados */
-}
-
-/* Sección de la imagen de fondo */
-.image-section {
-  flex: 1.3; /* Ocupa la mitad del espacio disponible */
-  background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80') no-repeat center center;
-  background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
-  position: relative; /* Posiciona elementos dentro de esta sección */
-  border-radius: 20px;
-}
-
-/* Capa de superposición para oscurecer la imagen de fondo */
-.overlay {
-  position: absolute; /* Posición absoluta para cubrir toda la imagen */
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(214, 221, 121, 0.5);
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
+  margin-top: 10px;
+  justify-items: center;
   align-items: center;
+}
+
+.image-section {
+  background: url('../../assets/images/loginfoto.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  margin-left: 60px; /* Espacio a la izquierda */
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(120, 145, 221, 0.5);
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
 }
 
 /* Sección del formulario */
 .form-section {
-  flex: 1; /* Ocupa la mitad del espacio disponible */
-  padding: 20px; /* Espaciado interno */
-  display: flex; /* Organiza los elementos de manera vertical */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff; /* Fondo blanco */
-  border-radius: 20px;
-  margin-top: 40px;
-}
-
-/* Estilos para el formulario */
-form {
-  display: flex; /* Organiza los elementos del formulario de manera vertical */
-  flex-direction: column;
-  width: 100%; /* Ocupa el 100% del contenedor */
-  max-width: 360px; /* Ancho máximo reducido */
-  padding: 15px;
-  margin: 0 auto; /* Centra el formulario */
-}
-
-/* Estilo del título (Bienvenidos) */
-h2 {
-  margin-top: 70px;
-  margin-bottom: 15px;
-  font-size: 17px; /* Tamaño reducido */
-  font-weight: bold;
-  color: #3e3e3e;
-}
-
-/* Estilo de las etiquetas */
-label {
-  font-weight: bold; /* Texto en negrita */
-  margin-bottom: 3px;
-  font-size: 13px; /* Tamaño reducido */
-}
-
-/* Estilo de los campos de entrada, botones y menús desplegables */
-input, button, .p-dropdown {
-  width: 100%; /* Ocupa el 100% del contenedor */
-  margin: 5px 0; /* Espaciado entre los elementos */
-  padding: 6px; /* Padding reducido */
-  border: 1px solid #ccc; /* Borde gris claro */
-  border-radius: 4px; /* Bordes redondeados */
-  box-sizing: border-box; /* Incluye el padding y borde en el tamaño total */
-  font-size: 13px; /* Tamaño reducido */
-  margin-bottom: 20px;
-}
-
-/* Estilos específicos para los menús desplegables */
-.p-dropdown {
-  padding: 0;
-  height: 36px; /* Altura reducida */
-  line-height: normal;
-  border-radius: 5px; /* Bordes redondeados */
-}
-
-/* Estilos para los iconos dentro de los campos de texto */
-.p-input-icon-left {
-  position: relative; /* Posición para los iconos */
-  display: flex;
-  align-items: center;
-}
-
-.p-input-icon-left i {
-  position: absolute;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%); /* Centra el icono verticalmente */
-  font-size: 20px; /* Tamaño reducido */
-  color: #b9b9b9; /* Color gris para el icono */
-}
-
-.p-input-icon-left input {
-  padding-left: 35px; /* Espaciado a la izquierda para el icono */
   width: 100%;
-  height: 36px; /* Altura reducida */
-  box-sizing: border-box;
-  margin-top: 18px;
-}
-
-/* Estilos para el campo de contraseña */
-.password-icon i {
-  font-size: 25px;
-  color: #b9b9b9; /* Color gris para el icono */
-  left: 10px;
-}
-
-/* Estilo del botón */
-.p-button {
-  background-color: #4F5F92; /* Color de fondo del botón */
-  color: white; /* Color del texto */
-  border: none; /* Elimina el borde */
-  padding: 8px 20px; /* Padding ajustado */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 15px; /* Tamaño de la fuente */
-  transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
-  margin-bottom: 20px;
-}
-
-/* Efecto al pasar el cursor sobre el botón */
-.p-button:hover {
-  background-color: #31427a !important; /* Color de fondo más oscuro al pasar el cursor */
-}
-
-/* Estilo del logo */
-.logo-container {
-  text-align: center; /* Centra el logo */
-  margin-bottom: 15px;
+  max-width: 380px;
+  margin-left: 40px;
 }
 
 .logo {
-  max-width: 250px; /* Ancho máximo del logo */
-  height: auto; /* Altura automática */
-  padding: 8px 20px; /* Padding ajustado */
+  max-width: 230px;
+  height: auto;
+  padding: 8px 20px;
   margin-top: 30px;
 }
 
-/* Estilo del enlace de "Olvidaste tu contraseña?" */
+h2 {
+  margin-top: 60px;
+  margin-bottom: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--gris-1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 360px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+label {
+  font-weight: 450;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: var(--gris-2);
+}
+
+input::placeholder {
+  color: var(--gris-5);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.p-field-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Espacio entre el checkbox y el texto */
+  margin-top: 5px;
+}
+
+.p-field-checkbox input[type="checkbox"] {
+  width: 8px;
+  height: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  accent-color: var(--azul-brillante); /* Color del checkbox cuando esté seleccionado */
+  border: 2px solid var(--azul-brillante); /* Color de borde cuando no está seleccionado */
+  background-color: white; /* Fondo blanco cuando no está seleccionado */
+  appearance: none; /* Eliminar el estilo predeterminado del navegador */
+  position: relative;
+}
+
+/* Estilo para el checkbox cuando está seleccionado */
+.p-field-checkbox input[type="checkbox"]:checked {
+  background-color: var(--azul-brillante); /* Fondo azul brillante cuando está seleccionado */
+  border-color: var(--azul-brillante); /* Borde azul brillante cuando está seleccionado */
+}
+
+/* Estilo para el checkmark */
+.p-field-checkbox input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 5px;
+  height: 10px;
+  border: solid white; /* Color del checkmark */
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+
+
+.p-field-checkbox label {
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 5px;
+  color: var(--azul-brillante); /* Asumiendo que esta variable esté definida */
+}
+
+
+input, .p-button {
+  width: 100%;
+  height: 36px;
+  padding: 6px;
+  border: 1px solid var(--gris-4);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 11px;
+}
+
+.p-button {
+  background-color: var(--azul);
+  color: var(--white);
+  border: none;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.p-button:hover {
+  background-color: var(--azul-hover) !important;
+}
+
 .forgot-password {
-  margin-top: 10px;
-  text-align: center; /* Centra el enlace */
+  margin-top: 24px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .forgot-password a {
-  font-size: 13px; /* Tamaño reducido */
-  color: #4F5F92; /* Color del enlace */
-  text-decoration: none; /* Elimina el subrayado */
+  font-size: 11px;
+  color: var(--azul);
+  text-decoration: none;
 }
 
 .forgot-password a:hover {
-  text-decoration: underline; /* Subraya el enlace al pasar el cursor */
+  text-decoration: underline;
 }
 
-/* Cambia el borde de los campos cuando están en foco */
-input:focus, .p-dropdown:focus, .p-password:focus {
-  border-color: #4CAF50 !important; /* Color verde cuando el campo está en foco */
+input:focus, .p-button:focus {
+  border-color: var(--azul) !important;
 }
 
-/* Cambia el color de la flecha del menú desplegable */
-.p-dropdown .p-dropdown-trigger {
-  color: #4CAF50; /* Color verde */
-  border: none; /* Elimina el borde */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-.p-dropdown .p-dropdown-trigger:hover {
-  color: #45a049; /* Color más oscuro al pasar el cursor */
+.input-wrapper i, .input-wrapper span {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--gris-5);
 }
 
-.error-message {
-  color: red;
-  font-weight: bold;
-  margin-top: 10px;
-  font-size: 15px;
-  text-align: center;
+.input-wrapper span {
+  left: 6px !important;
 }
 
-/* Reducir el espacio entre algunos campos */
-.p-field {
-  margin-bottom: 15px; /* Ajusta el espacio entre los campos */
+.input-wrapper input {
+  padding-left: 32px; /* Espacio para el ícono */
 }
 
-/* Ajusta los márgenes de los inputs específicos */
-.p-field input {
-  margin-top: 10px; /* Ajusta el margen superior para el campo input */
-}
 
-/* Para los campos donde necesitas más espacio (como entre identificación y contraseña) */
-.p-field:nth-child(2) {
-  margin-bottom: 30px; /* Aumenta el espacio entre los campos de identificación y contraseña */
-}
-
-/* Media query para dispositivos móviles */
-@media (max-width: 768px) {
-  .login-container {
-    flex-direction: column; /* Cambia la dirección del contenedor a columna */
-    height: auto; /* Altura automática */
-  }
-
-  .image-section, .form-section {
-    flex: none; /* Elimina la flexibilidad */
-    width: 100%; /* Ancho completo */
-    border-radius: 0; /* Elimina los bordes redondeados */
-  }
-
-  .form-section {
-    padding: 15px; /* Espaciado reducido */
-  }
-
-  form {
-    width: 90%; /* Ajusta el ancho para pantallas pequeñas */
-    max-width: none; /* Elimina el ancho máximo */
-  }
+.input-wrapper span.material-symbols-outlined {
+  font-size: 20px; /* Aumenta el tamaño según necesidad */
 }

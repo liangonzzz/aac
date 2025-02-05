@@ -56,7 +56,7 @@ body, .login-container, .form-section, form, label, input, .p-button {
 }
 
 h2 {
-  margin-top: 60px;
+  margin-top: 50px;
   margin-bottom: 15px;
   font-size: 17px;
   font-weight: bold;
@@ -164,7 +164,7 @@ input, .p-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 18px;
+  margin-top: 24px;
 }
 
 .p-button:hover {
@@ -172,7 +172,7 @@ input, .p-button {
 }
 
 .forgot-password {
-  margin-top: 24px;
+  margin-top: 12px;
   text-align: center;
   cursor: pointer;
 }
@@ -218,4 +218,27 @@ input:focus, .p-button:focus {
 
 .input-wrapper span.material-symbols-outlined {
   font-size: 20px; /* Aumenta el tamaño según necesidad */
+}
+
+.error-container {
+  min-height: 0; /* No ocupa espacio por defecto */
+  transition: min-height 0.3s ease; /* Transición suave */
+  margin-top: 10px; /* Espacio superior para separar del botón */
+}
+
+.error-text {
+  color: red;
+  text-align: center;
+  font-size: 12px;
+  margin: 0; /* Elimina el margen predeterminado del <p> */
+  padding: 4px 0; /* Espaciado interno para el mensaje */
+  opacity: 0; /* Inicialmente invisible */
+  transform: translateY(-10px); /* Desplazamiento inicial */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+/* Muestra el mensaje de error con animación */
+.error-container:has(.error-text) .error-text {
+  opacity: 1; /* Visible */
+  transform: translateY(0); /* Sin desplazamiento */
 }

@@ -108,7 +108,7 @@ input, .p-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 18px;
+  margin-top: 1px;
 }
 
 /* Estilos para los iconos dentro de los campos de texto */
@@ -167,8 +167,27 @@ input::placeholder {
   font-size: 13px;
   color: #617acb;
   position: relative;
-  top: 1px;
+  top: 2.5px;
 }
+
+.error-container {
+  min-height: 0; /* No ocupa espacio por defecto */
+  transition: min-height 0.3s ease;
+}
+
+.error-text {
+  color: red;
+  text-align: center;
+  font-size: 12px;
+  margin: 0; /* Elimina el margen predeterminado del <p> */
+  padding: 4px 0; /* Espaciado interno para el mensaje */
+}
+
+/* Ajusta el contenedor cuando hay un mensaje de error */
+.error-container:has(.error-text) {
+  min-height: 20px; /* Reserva espacio solo cuando hay un mensaje */
+}
+
 
 /* Media query para dispositivos móviles */
 @media (max-width: 768px) {

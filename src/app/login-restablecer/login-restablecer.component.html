@@ -1,20 +1,18 @@
 <div class="login-container">
   <div class="image-section">
-    <div class="overlay">
-      <!-- Puedes agregar algún contenido aquí si deseas -->
-    </div>
+    <div class="overlay"></div>
   </div>
   <div class="form-section">
-      <img src="../../assets/images/logo_grh (1).svg" alt="Logo" class="logo"> 
+    <img src="../../assets/images/logo_grh (1).svg" alt="Logo" class="logo" />
     <h2>Restablece tu contraseña</h2>
     <h5>
       Ingresa tu correo y te enviaremos las instrucciones para restablecer tu
       contraseña
     </h5>
 
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
       <div class="p-field">
-        <label for="email"> </label>
+        <label for="email"></label>
         <span class="p-input-icon-left">
           <i class="pi pi-envelope"></i>
           <input
@@ -22,16 +20,16 @@
             id="email"
             type="email"
             placeholder="Ingrese su Correo Electrónico"
-            required
-            name="email"
-            [(ngModel)]="email"
+            formControlName="email"
           />
         </span>
       </div>
 
-      <!-- Mensaje de error utilizando p-message -->
-      <div *ngIf="errorMessage" class="card">
-        <p-message severity="error" text="{{ errorMessage }}"></p-message>
+      <!-- Contenedor del mensaje de error -->
+      <div class="error-container">
+        <p *ngIf="errorMessage" class="error-text">
+          {{ errorMessage }}
+        </p>
       </div>
 
       <button pButton type="submit" label="ENVIAR" class="p-mt-2"></button>

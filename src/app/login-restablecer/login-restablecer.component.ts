@@ -1,55 +1,70 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-// prime
+// PrimeNG
 import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { DropdownModule } from 'primeng/dropdown';
-import { CheckboxModule } from 'primeng/checkbox';
-import { MessageModule } from 'primeng/message';
 
 @Component({
   selector: 'app-login-restablecer',
   standalone: true,
   imports: [
     CommonModule,
-    DropdownModule,
-    FormsModule,
     InputTextModule,
-    PasswordModule,
     ButtonModule,
-    CheckboxModule,
-    MessageModule
+    ReactiveFormsModule, // Importante para Reactive Forms
   ],
   templateUrl: './login-restablecer.component.html',
   styleUrls: ['./login-restablecer.component.scss']
 })
 export class LoginRestablecerComponent {
-  email: string = '';  // Definir la propiedad para el correo electrónico
-  errorMessage: string = '';  // Mensaje de error
+  resetForm: FormGroup;
+  errorMessage: string = '';
+  submitted: boolean = false;
+  private errorTimeout: any; // Variable para almacenar el timeout
 
-  constructor(private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.resetForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]] // Validaciones
+    });
+  }
 
   onSubmit() {
-    if (!this.email) {
-      this.errorMessage = '¡Ingrese su correo electrónico!';  // Mensaje de error si el campo está vacío
+    this.submitted = true; // Marcar que se ha intentado enviar el formulario
 
-      // Temporizador para ocultar el mensaje de error después de 1500 ms
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 1000);
+    const emailControl = this.resetForm.get('email');
+    if (emailControl?.invalid) {
+      this.errorMessage = this.getErrorMessage();
+
+      // Limpiar el mensaje de error después de 1500 ms
+      if (this.errorTimeout) {
+        clearTimeout(this.errorTimeout); // Cancelar el timeout anterior si existe
+      }
+      this.errorTimeout = setTimeout(() => {
+        this.errorMessage = ''; // Limpiar el mensaje de error
+      }, 1500);
 
       return;
     }
 
-    this.errorMessage = '';  // Limpiar el mensaje de error si todo está correcto
-    this.router.navigate(['/login-restablecer-1']);  // Navegar a la ruta de restablecer 1
+    this.errorMessage = '';
+    this.router.navigate(['/login-restablecer-1']);
   }
 
   navigateToDatateam() {
     this.router.navigate(['/datateam']);
+  }
+
+  getErrorMessage(): string {
+    const emailControl = this.resetForm.get('email');
+    if (emailControl?.hasError('required')) {
+      return 'El correo electrónico es obligatorio';
+    }
+    if (emailControl?.hasError('email')) {
+      return 'Correo electrónico inválido';
+    }
+    return '';
   }
 }
