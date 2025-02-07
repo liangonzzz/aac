@@ -15,13 +15,8 @@
         <label for="email"></label>
         <span class="p-input-icon-left">
           <i class="pi pi-envelope"></i>
-          <input
-            pInputText
-            id="email"
-            type="email"
-            placeholder="Ingrese su Correo Electrónico"
-            formControlName="email"
-          />
+          <input pInputText id="email" type="email" placeholder="Ingrese su Correo Electrónico"
+            formControlName="email" />
         </span>
       </div>
 
@@ -32,13 +27,10 @@
         </p>
       </div>
 
-      <button pButton type="submit" label="ENVIAR" class="p-mt-2"></button>
+      <app-button label="ENVIAR" type="submit"></app-button>
 
       <div class="return-home">
-        <a (click)="navigateToDatateam()">
-          <i class="pi pi-arrow-left"></i> Vuelve a la pantalla de Inicio de
-          Sesión
-        </a>
+        <a (click)="navigateToDatateam()"><i class="pi pi-arrow-left"></i> Vuelve a la pantalla de Inicio de Sesión </a>
       </div>
     </form>
   </div>

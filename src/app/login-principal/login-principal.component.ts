@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared'; // Asegúrate de que la ruta sea correcta
 
 // prime
 import { InputTextModule } from 'primeng/inputtext';
@@ -16,7 +17,8 @@ import { ButtonModule } from 'primeng/button';
     InputTextModule,
     ReactiveFormsModule,
     PasswordModule,
-    ButtonModule
+    ButtonModule,
+    SharedModule
   ],
   templateUrl: './login-principal.component.html',
   styleUrls: ['./login-principal.component.scss']

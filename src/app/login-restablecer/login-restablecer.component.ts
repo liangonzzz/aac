@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared';
 
 // PrimeNG
 import { InputTextModule } from 'primeng/inputtext';
@@ -14,7 +15,8 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     InputTextModule,
     ButtonModule,
-    ReactiveFormsModule, // Importante para Reactive Forms
+    ReactiveFormsModule,
+    SharedModule
   ],
   templateUrl: './login-restablecer.component.html',
   styleUrls: ['./login-restablecer.component.scss']
@@ -54,7 +56,7 @@ export class LoginRestablecerComponent {
   }
 
   navigateToDatateam() {
-    this.router.navigate(['/datateam']);
+    this.router.navigate(['/login-principal']);
   }
 
   getErrorMessage(): string {

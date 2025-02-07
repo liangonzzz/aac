@@ -1,70 +1,60 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared'; // Asegúrate de que la ruta sea correcta
 
-// prime
+// PrimeNG
 import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { DropdownModule } from 'primeng/dropdown';
-import { CheckboxModule } from 'primeng/checkbox';
-import { MessageModule } from 'primeng/message';
 
 @Component({
   selector: 'app-login-restablecer-1',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
     InputTextModule,
-    PasswordModule,
     ButtonModule,
-    DropdownModule,
-    CheckboxModule,
-    MessageModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   templateUrl: './login-restablecer-1.component.html',
-  styleUrls: ['./login-restablecer-1.component.css']
+  styleUrls: ['./login-restablecer-1.component.scss']
 })
 export class LoginRestablecer1Component {
-  title = 'login-restablecer-1';
+  loginForm: FormGroup;
+  showError: boolean = false; // Controla la visibilidad del mensaje de error
+  private errorTimeout: any; // Almacena el timeout para el mensaje de error
 
-  newPassword: string = '';      // Nueva contraseña
-  confirmPassword: string = '';  // Confirmación de la contraseña
-  errorMessage: string = '';     // Mensaje de error
-
-  constructor(private router: Router) {}
+  constructor(private router: Router, private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      password: ['', Validators.required], // Campo obligatorio
+      passwordConfirm: ['', Validators.required] // Campo obligatorio
+    });
+  }
 
   onSubmit() {
-    if (!this.newPassword || !this.confirmPassword) {
-      this.errorMessage = '¡Digite su contraseña!';  // Mensaje de error si los campos están vacíos
-      
-      // Temporizador para ocultar el mensaje de error después de 1000 ms
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 1000);
-      
-      return;
-    }
+    // Verifica si los campos están vacíos
+    if (this.loginForm.invalid) {
+      this.showError = true; // Muestra el mensaje de error
 
-    if (this.newPassword !== this.confirmPassword) {
-      this.errorMessage = 'Las contraseñas no coinciden';  // Error si las contraseñas no coinciden
-      
-      // Temporizador para ocultar el mensaje de error después de 1000 ms
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 1000);
-      
-      return;
-    }
+      // Cancela el timeout anterior si existe
+      if (this.errorTimeout) {
+        clearTimeout(this.errorTimeout);
+      }
 
-    this.errorMessage = '';  // Limpiar el mensaje de error si todo está correcto
-    alert('Contraseña restablecida correctamente');  // Confirmación
-    this.router.navigate(['/login-principal']);  // Redirección a login-principal
+      // Oculta el mensaje de error después de 1500 ms
+      this.errorTimeout = setTimeout(() => {
+        this.showError = false;
+      }, 1500);
+    } else {
+      this.showError = false; // Oculta el mensaje de error
+      this.router.navigate(['/login-principal']); // Navega al siguiente componente
+    }
   }
 
-  navigateToDatateam() {
-    this.router.navigate(['/datateam']);
+  navigateToLoginRestablecer() {
+    this.router.navigate(['/login-restablecer']);
   }
+
 }
