@@ -4,6 +4,7 @@ import { LoginRestablecerComponent } from './login-restablecer/login-restablecer
 import { LoginRestablecer1Component } from './login-restablecer-1/login-restablecer-1.component';
 import { PantallaCreacionComponent } from './pantalla-creacion/pantalla-creacion.component';
 import { LoginPrincipalComponent } from './login-principal/login-principal.component';
+import { HolaComponent } from './hola/hola.component';
 
 
 export const routes: Routes = [
@@ -12,5 +13,6 @@ export const routes: Routes = [
   { path: 'login-restablecer-1', component: LoginRestablecer1Component },
   { path: 'pantalla-creacion', component: PantallaCreacionComponent },
   { path: 'login-principal', component: LoginPrincipalComponent },
+  { path: 'hola', component: HolaComponent },
   { path: '', redirectTo: '/datateam', pathMatch: 'full' }
 ];

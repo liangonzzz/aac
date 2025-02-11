@@ -1,0 +1,25 @@
+<body>
+  <div class="contenedor">
+    <div class="cuadrado grande"></div>
+    <div class="cuadrado arriba">Mi Logo</div>
+    <div class="cuadrado abajo">
+        <app-input-login
+            label="Usuario"
+            placeholder="Ingrese su usuario"
+            icon="pi-user"
+            [control]="loginForm.controls['usuario'] as FormControl>
+        </app-input-login>
+
+        <app-input-login
+            label="Contraseña"
+            type="password"
+            placeholder="Ingrese su contraseña"
+            icon="pi-lock"
+            [control]="loginForm.controls['password'] as FormControl"
+>
+        </app-input-login>
+
+        <button (click)="onSubmit()">Iniciar Sesión</button>
+    </div>
+</div>
+</body>
