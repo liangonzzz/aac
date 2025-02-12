@@ -1,11 +1,17 @@
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <div class="login-container">
+  <!-- Sección de la imagen (Cuadro Rojo) -->
   <div class="image-section">
     <div class="overlay"></div>
+    <div><img src="../../assets/images/logo_grh (1).svg" alt="marca" class="marca"></div>
   </div>
-  <div class="form-section">
+
+  <!-- Sección del logo (Cuadro Azul) -->
+  <div class="logo-section">
     <img src="../../assets/images/logo_grh (1).svg" alt="Logo" class="logo">
+  </div>
+
+  <!-- Sección del formulario (Cuadro Verde) -->
+  <div class="form-section">
     <h2>Bienvenido</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="p-field">
@@ -37,7 +43,7 @@
       </div>
 
       <!-- Botón de enviar -->
-      <app-button label="CONFIRMAR" type="submit"></app-button>
+      <app-button label="CONFIRMAR" type="submit" class="login-button"></app-button>
 
 
 
