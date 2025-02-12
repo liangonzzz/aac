@@ -302,7 +302,7 @@ body, html {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
-} 
+}
 
 /* ----------------------------- */
 /*       Estilo para Dirección y Administrador GRH (como cuadros de texto) */
@@ -331,7 +331,7 @@ body, html {
 }
 
 /* Ajuste para los íconos dentro del botón */
-.p-field button.input-like-btn i, 
+.p-field button.input-like-btn i,
 .p-field button.input-like-btn svg {
   font-size: 1.2rem;   /* Tamaño del ícono*/
   color: #e3ce61;      /* Color del ícono */
