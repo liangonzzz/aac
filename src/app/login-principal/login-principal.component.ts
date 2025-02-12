@@ -1,16 +1,15 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-
+import { AuthService } from '../service/auth.service'; // 👈 Importa el servicio
 
 // PrimeNG
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 
-//Components
+// Components
 import { SharedModule } from '../shared/shared';
 import { InputLoginComponent } from '../shared/input-login/input-login.component';
 
@@ -20,49 +19,62 @@ import { InputLoginComponent } from '../shared/input-login/input-login.component
   imports: [
     CommonModule,
     InputTextModule,
-    ReactiveFormsModule,
     PasswordModule,
     ButtonModule,
     SharedModule,
-    InputLoginComponent
+    InputLoginComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './login-principal.component.html',
   styleUrls: ['./login-principal.component.scss']
 })
 export class LoginPrincipalComponent {
   loginForm: FormGroup;
-  showError: boolean = false; // Controla la visibilidad del mensaje de error
-  private errorTimeout: any; // Almacena el timeout para el mensaje de error
+  showError: boolean = false;
+  private errorTimeout: any;
 
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService // 👈 Inyecta el servicio de autenticación
+  ) {
     this.loginForm = this.fb.group({
-      documentNumber: ['', Validators.required], // Campo obligatorio
-      password: ['', Validators.required] // Campo obligatorio
+      documentNumber: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
   onSubmit() {
-    // Verifica si los campos están vacíos
     if (this.loginForm.invalid) {
-      this.showError = true; // Muestra el mensaje de error
-
-      // Cancela el timeout anterior si existe
-      if (this.errorTimeout) {
-        clearTimeout(this.errorTimeout);
-      }
-
-      // Oculta el mensaje de error después de 1500 ms
-      this.errorTimeout = setTimeout(() => {
-        this.showError = false;
-      }, 1500);
-    } else {
-      this.showError = false; // Oculta el mensaje de error
-      this.router.navigate(['/pantalla-creacion']); // Navega al siguiente componente
+      this.showErrorMessage();
+      return;
     }
+
+    const credentials = this.loginForm.value;
+
+    this.authService.login(credentials).subscribe({
+      next: (response) => {
+        console.log('Login exitoso:', response);
+        this.router.navigate(['/pantalla-creacion']); // ✅ Redirigir al usuario
+      },
+      error: (error) => {
+        console.error('Error en el login:', error);
+        this.showErrorMessage();
+      }
+    });
+  }
+
+  private showErrorMessage() {
+    this.showError = true;
+    if (this.errorTimeout) {
+      clearTimeout(this.errorTimeout);
+    }
+    this.errorTimeout = setTimeout(() => {
+      this.showError = false;
+    }, 1500);
   }
 
   navigateToLoginRestablecer() {
     this.router.navigate(['/login-restablecer']);
   }
-
 }
