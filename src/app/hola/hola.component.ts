@@ -14,18 +14,18 @@ export class HolaComponent {
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.loginForm = new FormGroup({
-      usuario: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
+    this.loginForm = this.fb.group({ // ✅ Usa FormBuilder correctamente
+      documentNumber: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
   // Getters para acceder a los controles como FormControl directamente
-  get usuarioControl(): FormControl {
-    return this.loginForm.get('usuario') as FormControl;
+  get documentNumber(): FormControl {
+    return this.loginForm.get('documentNumber') as FormControl;
   }
 
-  get passwordControl(): FormControl {
+  get password(): FormControl {
     return this.loginForm.get('password') as FormControl;
   }
 

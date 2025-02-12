@@ -3,23 +3,23 @@
     <div class="cuadrado grande"></div>
     <div class="cuadrado arriba">Mi Logo</div>
     <div class="cuadrado abajo">
-      <app-input-login
-      label="Usuario"
-      placeholder="Ingrese su usuario"
-      icon="pi-user"
-      [control]="usuarioControl">
-  </app-input-login>
+        <app-input-login
+          label="Número de usuario"
+          type="number"
+          placeholder="Ingrese su número de documento"
+          icon="pi pi-user"
+          [control]="documentNumber">
+        </app-input-login>
 
-  <app-input-login
-      label="Contraseña"
-      type="password"
-      placeholder="Ingrese su contraseña"
-      icon="pi-lock"
-      [control]="passwordControl">
-  </app-input-login>
+        <app-input-login
+          label="Contraseña"
+          type="password"
+          placeholder="Ingrese su contraseña"
+          icon="pi pi-lock"
+          [control]="password">
+        </app-input-login>
 
-  <button (click)="onSubmit()">Iniciar Sesión</button>
+      <button (click)="onSubmit()">Iniciar Sesión</button>
     </div>
-</div>
+  </div>
 </body>
-

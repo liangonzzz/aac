@@ -1,7 +1,7 @@
 <div class="p-field">
-  <label *ngIf="label">{{ label }}</label>
+  <label>{{ label }}</label>
   <div class="input-wrapper">
-    <i *ngIf="icon" class="pi" [ngClass]="icon"></i>
-    <input [type]="type" [placeholder]="placeholder" [formControl]="control" />
+    <i class="{{ icon }}"></i>
+    <input pInputText [type]="type" [placeholder]="placeholder" [formControl]="control" />
   </div>
 </div>

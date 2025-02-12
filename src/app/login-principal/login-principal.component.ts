@@ -2,13 +2,17 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/shared';
 
 
-// prime
+
+// PrimeNG
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+
+//Components
+import { SharedModule } from '../shared/shared';
+import { InputLoginComponent } from '../shared/input-login/input-login.component';
 
 @Component({
   selector: 'app-login-principal',
@@ -20,6 +24,7 @@ import { ButtonModule } from 'primeng/button';
     PasswordModule,
     ButtonModule,
     SharedModule,
+    InputLoginComponent
   ],
   templateUrl: './login-principal.component.html',
   styleUrls: ['./login-principal.component.scss']
