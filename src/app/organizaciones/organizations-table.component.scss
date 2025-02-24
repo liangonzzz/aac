@@ -1,0 +1,302 @@
+/* Reglas generales */
+body {
+  background-color: #dc3545;
+  margin: 0;
+  padding: 0;
+}
+
+.table-container {
+  padding: 30px 30px 0 30px;
+  max-width: 100%;
+  margin: 28px auto 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  &.sidebar-expanded {
+    max-width: calc(100% - 240px);
+  }
+}
+
+/* Primer rectángulo: Header */
+.header-rectangle {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  width: 100%;
+  box-sizing: border-box;
+
+  h3 {
+    flex: 0 0 75%;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--azul);
+    margin-left: 28px;
+  }
+
+  .add-button {
+    flex: 0 0 20%;
+    background-color: #ffffff !important;
+    color: var(--azul) !important;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 1;
+    margin-bottom: 11px;
+    border: 1px solid var(--azul) !important;
+    height: 30px;
+
+    &:hover {
+      background-color: #f7fbff !important;
+    }
+  }
+}
+
+/* Segundo rectángulo: Search */
+.search-rectangle {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  height: 44px;
+  width: 100%;
+  box-sizing: border-box;
+
+  .search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 30px;
+    width: 100%;
+  }
+
+  .search-icon {
+    position: relative;
+    flex: 0 0 85%;
+    height: 100%;
+
+    i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gris-2);
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    input {
+      padding-left: 48px;
+      width: 100%;
+      border: 1px solid var(--gris-3);
+      border-radius: 4px;
+      height: 100%;
+      font-size: 14px;
+      box-sizing: border-box;
+      line-height: 31px;
+    }
+  }
+
+  .search-button {
+    flex: 0 0 12%;
+    height: 30px;
+    background-color: #ffffff !important;
+    border: 1px solid var(--azul) !important;
+    color: var(--azul);
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+    margin-bottom: 12px;
+
+    &:hover {
+      background-color: #0057a3;
+    }
+  }
+}
+
+/* Tercer rectángulo: Table - Ajuste para ocupar el 100% del contenedor */
+.table-rectangle {
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  width: 100%;
+  height: 290px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-rectangle table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Para controlar mejor los anchos */
+  height: 100%; /* Ocupa todo el alto disponible */
+  flex: 1; /* Permite que la tabla crezca para llenar el espacio */
+}
+
+.table-rectangle thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table-rectangle thead th {
+  padding: 6px 8px;
+  background-color: #f7fbff;
+  color: var(--azul);
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid var(--gris-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+/* Ancho de columnas según porcentajes especificados */
+.table-rectangle thead th:nth-child(1) { width: 13%; } /* Logo */
+.table-rectangle thead th:nth-child(2) { width: 9%; } /* Nombre */
+.table-rectangle thead th:nth-child(3) { width: 8%; } /* Teléfono */
+.table-rectangle thead th:nth-child(4) { width: 15%; } /* Correo */
+.table-rectangle thead th:nth-child(5) { width: 13%; } /* Administración */
+.table-rectangle thead th:nth-child(6) { width: 7%; } /* Funcionarios */
+.table-rectangle thead th:nth-child(7) { width: 7%; } /* Candidatos */
+.table-rectangle thead th:nth-child(8) { width: 14%; } /* Funcionalidades */
+
+.table-rectangle tbody {
+  /* Permite que el cuerpo ocupe todo el espacio disponible */
+  display: table-row-group;
+}
+
+/* CAMBIO: Se eliminó la regla para filas pares con fondo gris */
+/* .table-rectangle tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+} */
+
+.table-rectangle tbody td {
+  padding: 4px 8px;
+  font-size: 13px;
+  color: #333;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  height: 24px; /* CAMBIO: Reducido de 32px a 24px para menor altura */
+}
+
+.table-rectangle .logo-img {
+  width: 20px; /* CAMBIO: Reducido de 24px a 20px */
+  height: 20px; /* CAMBIO: Reducido de 24px a 20px */
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.table-rectangle .action-button {
+  background-color: #ffffff !important;
+  border: 1px solid var(--azul) !important;
+  color: var(--azul) !important;
+  padding: 2px 8px;
+  font-size: 13px;
+  height: 22px; /* CAMBIO: Reducido de 24px a 22px */
+  white-space: nowrap;
+}
+
+.table-rectangle .action-button:hover {
+  background-color: #f7fbff !important;
+}
+
+/* Cuarto rectángulo: Footer */
+.footer-rectangle {
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 20px;
+
+  .export-button {
+    background-color: #ffffff !important;
+    border: 1.5px solid var(--azul) !important;
+    color: var(--azul) !important;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 14%;
+    height: 32px;
+    box-sizing: border-box;
+    margin-top: 20px ;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #f7fbff !important;
+    }
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .table-container {
+    padding: 16px;
+    margin: 16px auto 0;
+  }
+
+  .header-rectangle {
+    flex-direction: column;
+    height: auto;
+    padding: 8px;
+
+    .add-button {
+      width: 100%;
+      margin: 8px 0;
+    }
+  }
+
+  .search-rectangle {
+    height: auto;
+    padding: 8px;
+
+    .search-wrapper {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .search-icon {
+      flex: 0 0 100%;
+    }
+
+    .search-button {
+      width: 100%;
+      margin: 8px 0;
+    }
+  }
+
+  .table-rectangle {
+    height: auto;
+  }
+
+  .footer-rectangle {
+    flex-direction: column;
+    height: auto;
+    gap: 8px;
+
+    .export-button {
+      width: 100%;
+      margin: 8px 0;
+    }
+  }
+}

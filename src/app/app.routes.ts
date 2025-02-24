@@ -7,6 +7,12 @@ import { LoginPrincipalComponent } from './login-principal/login-principal.compo
 import { HolaComponent } from './hola/hola.component';
 import { ConfiContraComponent } from './confi-contra/confi-contra.component';
 import { ConfiCorrComponent } from './confi-corr/confi-corr.component';
+import { PantallaComponent } from './pantalla/pantalla.component';
+import { SuperadmiComponent } from './asuperadmi/superadmi.component';
+import { OrganizationsTableComponent } from './organizaciones/organizations-table.component';
+import { TablasComponent } from './atablas/tablas.component';
+
+
 
 
 export const routes: Routes = [
@@ -18,5 +24,9 @@ export const routes: Routes = [
   { path: 'hola', component: HolaComponent },
   { path: 'confi-contra', component: ConfiContraComponent },
   { path: 'confi-corr', component: ConfiCorrComponent },
+  { path: 'pantalla', component: PantallaComponent },
+  { path: 'superadmin', component: SuperadmiComponent },
+  { path: 'tablas', component: TablasComponent },
+  { path: 'organizaciones', component: OrganizationsTableComponent },
   { path: '', redirectTo: '/datateam', pathMatch: 'full' }
 ];
