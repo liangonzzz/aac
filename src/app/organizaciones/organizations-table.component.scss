@@ -1,6 +1,5 @@
 /* Reglas generales */
 body {
-  background-color: #dc3545;
   margin: 0;
   padding: 0;
 }
@@ -125,26 +124,42 @@ body {
   }
 }
 
-/* Tercer rectángulo: Table - Ajuste para ocupar el 100% del contenedor */
+/* Tercer rectángulo: Table */
 .table-rectangle {
   background-color: #ffffff;
-  border-radius: 4px;
-  margin-bottom: 12px;
+  border-radius: 8px; /* Bordes redondeados para el contenedor de la tabla */
+  overflow: hidden; /* Esto asegura que el contenido no se desborde de las esquinas redondeadas */
+  margin-bottom: 8px;
   width: 100%;
-  height: 290px;
   box-sizing: border-box;
-  overflow-y: auto;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
 }
 
 .table-rectangle table {
   width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed; /* Para controlar mejor los anchos */
-  height: 100%; /* Ocupa todo el alto disponible */
-  flex: 1; /* Permite que la tabla crezca para llenar el espacio */
+  border-collapse: separate; /* Cambiado de collapse a separate para permitir border-radius */
+  border-spacing: 0; /* Elimina espacios entre celdas */
+  table-layout: fixed;
+  height: 100%;
+  flex: 1;
+  background-color: #ffffff;
+}
+
+/* Estilo para las celdas en las esquinas superiores */
+.table-rectangle thead th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.table-rectangle thead th:last-child {
+  border-top-right-radius: 8px;
+}
+
+/* Estilo para las celdas en las esquinas inferiores */
+.table-rectangle tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.table-rectangle tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
 }
 
 .table-rectangle thead {
@@ -154,64 +169,108 @@ body {
 }
 
 .table-rectangle thead th {
-  padding: 6px 8px;
-  background-color: #f7fbff;
-  color: var(--azul);
+  padding: 8px 8px;
+  background-color: #ffffff;
+  color: var(--gris-2);
   font-weight: 600;
   text-align: left;
-  border-bottom: 1px solid var(--gris-3);
+  border-bottom: 8px solid #fafafa;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 13px;
-  line-height: 1.2;
+  font-size: 10px; /* Aumentado de 13px a 15px */
+  line-height: 3; /* Aumentado ligeramente para mejor legibilidad */
+  height: 39px;/* Añadido para dar más espacio vertical */
 }
 
+.table-rectangle thead th i.fa-sort {
+  margin-left: 8px; /* Lo empuja hacia la derecha */
+  font-size: 8px; /* Ajusta el tamaño */
+  color: #7a7a7a; /* Color del icono */
+
+}
 /* Ancho de columnas según porcentajes especificados */
 .table-rectangle thead th:nth-child(1) { width: 13%; } /* Logo */
-.table-rectangle thead th:nth-child(2) { width: 9%; } /* Nombre */
+.table-rectangle thead th:nth-child(2) { width: 10%; } /* Nombre */
 .table-rectangle thead th:nth-child(3) { width: 8%; } /* Teléfono */
-.table-rectangle thead th:nth-child(4) { width: 15%; } /* Correo */
-.table-rectangle thead th:nth-child(5) { width: 13%; } /* Administración */
-.table-rectangle thead th:nth-child(6) { width: 7%; } /* Funcionarios */
-.table-rectangle thead th:nth-child(7) { width: 7%; } /* Candidatos */
+.table-rectangle thead th:nth-child(4) { width: 13%; } /* Correo */
+.table-rectangle thead th:nth-child(5) { width: 11%; } /* Administración */
+.table-rectangle thead th:nth-child(6) { width: 9%; } /* Funcionarios */
+.table-rectangle thead th:nth-child(7) { width: 9%; } /* Candidatos */
 .table-rectangle thead th:nth-child(8) { width: 14%; } /* Funcionalidades */
 
 .table-rectangle tbody {
-  /* Permite que el cuerpo ocupe todo el espacio disponible */
   display: table-row-group;
 }
 
-/* CAMBIO: Se eliminó la regla para filas pares con fondo gris */
-/* .table-rectangle tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-} */
+/* Líneas grises entre filas - MODIFICADO para ser más notable */
+.table-rectangle tbody tr {
+  position: relative;
+}
+
+.table-rectangle tbody tr:not(:last-child) td {
+  border-bottom: 1px solid var(--gris-5); /* Línea gris más oscura y notable entre filas */
+}
+
+.table-rectangle tbody tr:last-child {
+  border-bottom: none; /* Eliminar borde en la última fila */
+}
 
 .table-rectangle tbody td {
   padding: 4px 8px;
-  font-size: 13px;
+  font-size: 12px;
   color: #333;
   vertical-align: middle;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.2;
-  height: 24px; /* CAMBIO: Reducido de 32px a 24px para menor altura */
+  height: 48px;
 }
 
 .table-rectangle .logo-img {
-  width: 20px; /* CAMBIO: Reducido de 24px a 20px */
-  height: 20px; /* CAMBIO: Reducido de 24px a 20px */
+  width: 150px;
+  height: 20px;
   border-radius: 4px;
   object-fit: contain;
 }
 
+/* NUEVO: Estilos para botones circulares con usuario */
+.user-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px; /* Reducido de manera significativa */
+}
+
+.user-circle-button {
+  width: 24px !important; /* Ligeramente más pequeño */
+  height: 24px !important; /* Ligeramente más pequeño */
+  border-radius: 50% !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: #f7f9fd !important;
+  color: #7ab2d3 !important;
+  overflow: hidden !important;
+  transition: background-color 0.3s ease !important;
+  margin: 0 !important;
+  font-size: 9px;
+}
+.user-circle-button:nth-child(2) {
+  font-size: 14px;
+}
+
+
+/* Estilos anteriores */
 .table-rectangle .action-button {
   background-color: #ffffff !important;
   border: 1px solid var(--azul) !important;
   color: var(--azul) !important;
   padding: 2px 8px;
   font-size: 13px;
-  height: 22px; /* CAMBIO: Reducido de 24px a 22px */
+  height: 22px;
   white-space: nowrap;
+  margin: 0;
 }
 
 .table-rectangle .action-button:hover {
@@ -228,7 +287,8 @@ body {
   margin: 0;
   width: 100%;
   box-sizing: border-box;
-  height: 20px;
+  height: auto; /* Cambiado de 20px a auto para acomodar el paginador */
+  min-height: 50px; /* Añadido para asegurar espacio para los elementos */
 
   .export-button {
     background-color: #ffffff !important;
@@ -239,11 +299,55 @@ body {
     width: 14%;
     height: 32px;
     box-sizing: border-box;
-    margin-top: 20px ;
+    margin-top: 0; /* Cambiado de 20px a 0 */
     font-size: 16px;
 
     &:hover {
       background-color: #f7fbff !important;
+    }
+  }
+
+  /* MODIFICADO: Estilos para el paginador - Cambio de verde a rojo */
+  ::ng-deep .p-paginator {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    .p-paginator-pages .p-paginator-page {
+      color: var(--azul) !important;
+      min-width: 32px !important;
+      height: 20px !important;
+      margin: 0;
+
+      &.p-highlight {
+        background-color: #ffffff !important; /* Cambiado a rojo */
+        color: #ffffff !important;
+      }
+    }
+
+    .p-paginator-first,
+    .p-paginator-prev,
+    .p-paginator-next,
+    .p-paginator-last {
+      color: var(--azul) !important;
+      min-width: 32px;
+      height: 32px;
+
+      &:not(.p-disabled):hover {
+        background-color: #f7fbff !important;
+      }
+
+      &.p-disabled {
+        opacity: 0.5;
+      }
+    }
+
+    .p-dropdown {
+      height: 32px;
+
+      .p-dropdown-label {
+        padding-right: 24px;
+      }
     }
   }
 }
@@ -296,6 +400,12 @@ body {
 
     .export-button {
       width: 100%;
+      margin: 8px 0;
+    }
+
+    ::ng-deep .p-paginator {
+      width: 100%;
+      justify-content: center;
       margin: 8px 0;
     }
   }

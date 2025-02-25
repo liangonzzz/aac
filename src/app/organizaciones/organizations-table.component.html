@@ -1,35 +1,32 @@
 <!-- src/app/organizaciones/organizations-table.component.html -->
 <div class="table-container" [class.sidebar-expanded]="isSidebarExpanded">
-  <!-- Primer rectángulo: Organizaciones y botón de agregar -->
   <div class="header-rectangle">
     <h3>Organizaciones</h3>
     <button pButton label="Agregar organización" icon="pi pi-plus" class="add-button"></button>
   </div>
 
-  <!-- Segundo rectángulo: Cuadro de búsqueda y botón de buscar -->
   <div class="search-rectangle">
     <div class="search-wrapper">
       <span class="search-icon">
         <i class="pi pi-search"></i>
         <input pInputText type="text" placeholder="Buscar por Razón social" (input)="onGlobalFilter($event)" />
       </span>
-      <button pButton label="Buscar" class="search-button"></button>
+      <button pButton label="Buscar" class="search-button" (click)="search()"></button>
     </div>
   </div>
 
-  <!-- Tercer rectángulo: Tabla con datos paginados -->
   <div class="table-rectangle">
     <table>
       <thead>
         <tr>
-          <th>Logo</th>
-          <th>Nombre</th>
-          <th>Teléfono</th>
-          <th>Correo</th>
-          <th>Administración</th>
-          <th>Funcionarios</th>
-          <th>Candidatos</th>
-          <th>Funcionalidades</th>
+          <th></th>
+          <th (click)="sort('name')">Razón Social <i class="fa-solid fa-sort"></i></th>
+          <th (click)="sort('phone')">Teléfono <i class="fa-solid fa-sort"></i></th>
+          <th (click)="sort('email')">Correo <i class="fa-solid fa-sort"></i></th>
+          <th (click)="sort('admin')">Administración <i class="fa-solid fa-sort"></i></th>
+          <th (click)="sort('collaborators')">Funcionarios <i class="fa-solid fa-sort"></i></th>
+          <th (click)="sort('candidates')">Candidatos <i class="fa-solid fa-sort"></i></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -41,14 +38,24 @@
           <td>{{org.admin}}</td>
           <td>{{org.collaborators}}</td>
           <td>{{org.candidates}}</td>
-          <td><button pButton label="Ver" class="action-button"></button></td>
+          <td>
+            <div class="user-buttons-container">
+              <button pButton class="user-circle-button" icon="fa fa-pen"></button>
+              <button pButton class="user-circle-button"
+                [icon]="org.isActive ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'"
+                (click)="toggleOrganization(org)">
+              </button>
+              <button pButton class="user-circle-button" icon="fa-solid fa-trash"></button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Cuarto rectángulo: Paginación y botón de exportar -->
   <div class="footer-rectangle">
     <button pButton label="Exportar a Excel" icon="pi pi-file-excel" class="export-button"></button>
+    <p-paginator [first]="first" [rows]="rows" [totalRecords]="totalRecords" (onPageChange)="onPageChange($event)">
+    </p-paginator>
   </div>
 </div>

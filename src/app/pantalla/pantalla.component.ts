@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { SuperadmiComponent } from "../asuperadmi/superadmi.component";
+import { OrganizationsTableComponent } from "../organizaciones/organizations-table.component";
 
 @Component({
   selector: 'app-pantalla',
   standalone: true,
-  imports: [CommonModule, SidebarComponent, NavbarComponent, SuperadmiComponent],
+  imports: [CommonModule, SidebarComponent, NavbarComponent, SuperadmiComponent, OrganizationsTableComponent],
   templateUrl: './pantalla.component.html',
   styleUrls: ['./pantalla.component.scss']
 })

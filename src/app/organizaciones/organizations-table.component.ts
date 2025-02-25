@@ -16,20 +16,84 @@ import { CommonModule } from '@angular/common';
 export class OrganizationsTableComponent implements OnInit {
   @Input() isSidebarExpanded: boolean = false;
 
+  // Propiedades para la ordenación
+  sortField: string = '';
+  sortOrder: number = 1;
+
+  // Nueva propiedad para el término de búsqueda
+  searchTerm: string = '';
+
+  // Arreglo original y filtrado
   organizations: any[] = [
-    { logo: '../../assets/images/datalogo.png', name: 'Datacenter', phone: '123456789', email: 'info@dcasas.com.co', admin: 'Paola Pérez', collaborators: 542, candidates: 14 },
-    { logo: '../../assets/images/datalogo.png', name: 'Gelsa', phone: '111111111', email: 'admin@gelsa.com.co', admin: 'Pedro Hernández', collaborators: 542, candidates: 14 },
-    { logo: '../../assets/images/datalogo.png', name: 'PagaTodo', phone: '222222222', email: 'info@pagatodo.com.co', admin: 'Pablo González', collaborators: 542, candidates: 14 },
-    { logo: '../../assets/images/datalogo.png', name: 'Ubisoft', phone: '333333333', email: 'contact@ubisoft.com', admin: 'Julieta Parra', collaborators: 542, candidates: 14 },
-    { logo: '../../assets/images/datalogo.png', name: 'Empresa', phone: '444444444', email: 'info@empresa.com', admin: 'Jimena Arias', collaborators: 542, candidates: 14 },
-    { logo: '../../assets/images/datalogo.png', name: 'Ubisoft', phone: '333333333', email: 'contact@ubisoft.com', admin: 'Julieta Parra', collaborators: 542, candidates: 14 },
-    { logo: '../../assets/images/datalogo.png', name: 'Empresa', phone: '444444444', email: 'info@empresa.com', admin: 'Jimena Arias', collaborators: 542, candidates: 14 }
+    {
+      name: 'DataCenter',
+      logo: '../../assets/images/datalogo.png',
+      phone: '123456789',
+      email: 'contact@datacenter.com',
+      admin: 'Andrés Hernández',
+      collaborators: 150,
+      candidates: 14
+    },
+    {
+      name: 'Gelsa',
+      logo: '../../assets/images/gelsalogo.png',
+      phone: '987654321',
+      email: 'info@gelsa.com',
+      admin: 'David Gómez',
+      collaborators: 150,
+      candidates: 25
+    },
+    {
+      name: 'PagaTodo',
+      logo: '../../assets/images/pagatodo.png',
+      phone: '456789123',
+      email: 'soporte@pagatodo.com',
+      admin: 'Pedro Ramírez',
+      collaborators: 150,
+      candidates: 10
+    },
+    {
+      name: 'Ubisoft',
+      logo: '../../assets/images/Ubisoft_logo1.svg',
+      phone: '321654987',
+      email: 'support@ubisoft.com',
+      admin: 'Carlos Mendoza',
+      collaborators: 150,
+      candidates: 18
+    },
+    {
+      name: 'YouTube',
+      logo: '../../assets/images/youtube.png',
+      phone: '654321987',
+      email: 'contact@youtube.com',
+      admin: 'Sofía López',
+      collaborators: 150,
+      candidates: 12
+    },
+    {
+      name: 'Ubisoft',
+      logo: '../../assets/images/Ubisoft_logo1.svg',
+      phone: '321654987',
+      email: 'support@ubisoft.com',
+      admin: 'Carlos Mendoza',
+      collaborators: 150,
+      candidates: 18
+    },
+    {
+      name: 'YouTube',
+      logo: '../../assets/images/youtube.png',
+      phone: '654321987',
+      email: 'contact@youtube.com',
+      admin: 'Sofía López',
+      collaborators: 150,
+      candidates: 12
+    }
   ];
 
-  // Variables para la paginación
+  filteredOrganizations: any[] = [...this.organizations]; // Copia del arreglo original
   paginatedOrganizations: any[] = [];
   first: number = 0;
-  rows: number = 5; // Mostrar 5 registros por página
+  rows: number = 5;
   totalRecords: number = 0;
 
   ngOnInit(): void {
@@ -37,22 +101,61 @@ export class OrganizationsTableComponent implements OnInit {
     this.updatePaginatedOrganizations();
   }
 
+  // Método para capturar el valor del input
   onGlobalFilter(event: Event): void {
-    const value = (event.target as HTMLInputElement).value;
-    // Aquí podrías filtrar manualmente si no usas el filtro integrado de PrimeNG
+    this.searchTerm = (event.target as HTMLInputElement).value;
   }
 
-  // Método para manejar la paginación
+  // Método para realizar la búsqueda al hacer clic en el botón
+  search(): void {
+    if (this.searchTerm.trim() === '') {
+      this.filteredOrganizations = [...this.organizations];
+    } else {
+      this.filteredOrganizations = this.organizations.filter(org =>
+        org.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+    this.first = 0; // Resetear la paginación a la primera página
+    this.totalRecords = this.filteredOrganizations.length;
+    this.updatePaginatedOrganizations();
+  }
+
+  sort(field: string) {
+    if (this.sortField === field) {
+      this.sortOrder = -this.sortOrder;
+    } else {
+      this.sortField = field;
+      this.sortOrder = 1;
+    }
+    this.updateSort();
+    this.updatePaginatedOrganizations();
+  }
+
+  private updateSort() {
+    this.filteredOrganizations.sort((a, b) => {
+      const valueA = a[this.sortField];
+      const valueB = b[this.sortField];
+
+      if (typeof valueA === 'string' && typeof valueB === 'string') {
+        return valueA.localeCompare(valueB) * this.sortOrder;
+      }
+      return (valueA - valueB) * this.sortOrder;
+    });
+  }
+
+  toggleOrganization(org: any): void {
+    org.isActive = !org.isActive;
+  }
+
   onPageChange(event: any): void {
     this.first = event.first;
     this.rows = event.rows;
     this.updatePaginatedOrganizations();
   }
 
-  // Actualiza los datos paginados
   private updatePaginatedOrganizations(): void {
     const start = this.first;
     const end = this.first + this.rows;
-    this.paginatedOrganizations = this.organizations.slice(start, end);
+    this.paginatedOrganizations = this.filteredOrganizations.slice(start, end);
   }
 }

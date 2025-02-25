@@ -1,0 +1,160 @@
+/* Estilos para .table-container y sus modificadores */
+.table-container {
+  padding: 30px 30px 0 30px;
+  max-width: 100%;
+  margin: 28px auto 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  &.sidebar-expanded {
+    max-width: calc(100% - 240px);
+  }
+}
+
+/* Estilos para .title-rectangle y su contenido */
+.title-rectangle {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+
+  h3 {
+    flex: 0 0 75%;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--azul);
+    margin-left: 20px;
+  }
+}
+
+/* Estilos para .form-rectangle */
+.form-rectangle {
+  background-color: #17cc0a; /* Mantengo verde, pero puedes cambiar a rojo si es necesario */
+  border-radius: 8px;
+  padding: 8px 150px 8px 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70vh;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+
+/* Estilos para .form-container */
+.form-container {
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+/* Estilos para .organization-form (contenedor del formulario interno) */
+.organization-form {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: transparent;
+}
+
+/* Estilos para .p-field y sus elementos (labels, inputs, botones) */
+.p-field {
+  margin-bottom: 10px;
+}
+
+.p-field label {
+  display: block;
+  margin-bottom: 4px;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.p-inputtext {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  height: 30px;
+}
+
+/* Estilos para grids dentro de .p-field-grid */
+.p-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.p-field-grid.three-columns {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Estilos para botones con clase .edit-button (Dirección y Administrador GRH) */
+.edit-button {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc; /* Igual que los inputs */
+  border-radius: 4px;
+  font-size: 12px; /* Igual que los inputs */
+  color: #333; /* Igual que el texto de los inputs */
+  background-color: #ffffff; /* Igual que los inputs */
+  height: 30px; /* Igual que los inputs */
+  cursor: pointer; /* Indica que es un botón */
+  display: flex; /* Para alinear el ícono y el texto */
+  align-items: center; /* Centrar verticalmente */
+  gap: 8px; /* Espacio entre el ícono y el texto */
+}
+
+.edit-button i{
+  color: #ffe100; /* Igual que el texto de los inputs */
+}
+
+.edit-button:hover {
+  background-color: #f0f0f0; /* Ligeramente diferente para indicar hover, similar a los inputs */
+  border-color: #999; /* Ligeramente más oscuro para consistencia */
+}
+
+.edit-button i {
+  font-size: 12px; /* Tamaño reducido para el ícono, igual que el texto */
+}
+
+/* Estilos para el botón "Crear organización" (pButton) */
+.p-button {
+  background-color: #ffffff; /* Igual que los inputs para consistencia */
+  border: 1px solid #ccc; /* Igual que los inputs */
+  padding: 6px; /* Reducido para consistencia con inputs */
+  width: 100%;
+  font-size: 12px; /* Igual que los inputs */
+  color: #333; /* Igual que el texto de los inputs */
+  border-radius: 4px;
+  cursor: pointer;
+  height: 30px; /* Igual que los inputs */
+}
+
+.p-button:hover {
+  background-color: #f0f0f0; /* Ligeramente diferente para indicar hover, similar a los inputs */
+  border-color: #999; /* Ligeramente más oscuro para consistencia */
+}
+
+/* Estilos para el componente de subida de archivos (p-fileUpload) */
+.p-fileupload .p-button {
+  background-color: #f4a81d;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  height: 30px;
+}
+
+.p-fileupload .p-button:hover {
+  background-color: #d8940a;
+}

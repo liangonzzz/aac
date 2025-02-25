@@ -11,8 +11,8 @@ import { PantallaComponent } from './pantalla/pantalla.component';
 import { SuperadmiComponent } from './asuperadmi/superadmi.component';
 import { OrganizationsTableComponent } from './organizaciones/organizations-table.component';
 import { TablasComponent } from './atablas/tablas.component';
-
-
+import { FormularioComponent } from './formulario/formulario.component';
+import { PantallaVerComponent } from './pantalla-ver/pantalla-ver.component';
 
 
 export const routes: Routes = [
@@ -28,5 +28,10 @@ export const routes: Routes = [
   { path: 'superadmin', component: SuperadmiComponent },
   { path: 'tablas', component: TablasComponent },
   { path: 'organizaciones', component: OrganizationsTableComponent },
+  { path: 'formulario', component: FormularioComponent },
+  { path: 'pantalla-ver', component: PantallaVerComponent },
   { path: '', redirectTo: '/datateam', pathMatch: 'full' }
 ];
+
+
+
